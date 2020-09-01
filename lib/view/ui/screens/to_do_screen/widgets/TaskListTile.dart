@@ -4,9 +4,9 @@ import 'package:todoey/model/Task.dart';
 class TaskListTile extends StatelessWidget {
 
   Task task;
-  final Function(bool) checkboxCallback;
+  Function onStatusChanged;
 
-  TaskListTile(this.task, this.checkboxCallback);
+  TaskListTile(this.task, this.onStatusChanged);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class TaskListTile extends StatelessWidget {
                 decoration: TextDecoration.lineThrough) : null),
         controlAffinity: ListTileControlAffinity.trailing,
         value: task.isComplete,
-        onChanged: checkboxCallback,
+        onChanged: this.onStatusChanged
       ),
     );
   }
